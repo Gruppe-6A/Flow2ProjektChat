@@ -4,3 +4,5 @@ Your Repo must include a short description including (either in your README-file
 - [ ] A short design description of the chosen design.
 - [ ] A section stating who did what, backed up by your git-logs
 - [ ] A Description of the results of your acceptance tests with other groups
+
+https://docs.google.com/document/d/1NOUdRHKxtJS_gSaFNLnNqbH9SF2wvoYAJS67lwcBCv4/edit
