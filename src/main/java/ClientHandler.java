@@ -3,6 +3,7 @@ import com.sun.xml.internal.fastinfoset.util.StringArray;
 import java.io.BufferedReader;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -14,11 +15,15 @@ public class ClientHandler extends Thread {
     PrintWriter pw;
     static int id=0;
 
-    public String getClientName() {
-        return clientName;
-    }
-    public Socket getClient(){
-        return client;
+    public ClientHandler(ChatServer server1, Socket client) {
+        this.server1 = server1;
+        this.client = client;
+        try {
+            pw = new PrintWriter(client.getOutputStream(),true);
+            br = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -44,13 +49,14 @@ public class ClientHandler extends Thread {
 
             } else {
                 clientName = input[1];
-                server1.clientList.add(this);
+               server1.clientMap.put(input[1], this);
                server1.Online();
             }
             while(input[0] != "CLOSE"){
                  input = br.readLine().split("#");
                 switch(input[0]){
-                    case "SEND": input[1];
+                    //case "SEND": input[1];
+
                     case "CLOSE": pw.println("CLOSE#0"); client.close();break;
                     default: pw.println("CLOSE#1"); client.close();break;
                 }

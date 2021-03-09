@@ -6,14 +6,17 @@ import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class ChatServer {
 
-    public static final int DEFAULT_PORT = 420;
-    ArrayList<ClientHandler> clientList = new ArrayList<>();
-    //ConcurrentMap<String, ClientHandler> clientMap = new ConcurrentHashMap<>();
+    public static final int DEFAULT_PORT = 9001;
+   // ArrayList<ClientHandler> clientList = new ArrayList<>();
+
+    ConcurrentMap<String, ClientHandler> clientMap = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
 
@@ -30,31 +33,39 @@ public class ChatServer {
         }
     }
 
+
+
     public void Online() {
         String onlineMessage = "";
-        for (ClientHandler client : clientList){
-            onlineMessage += client.getClientName()+", ";
+        for(Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
+            onlineMessage += entry.getKey();
         }
-        for(ClientHandler client : clientList){
-            client.message(onlineMessage);
+        for(Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
+            entry.getValue().message(onlineMessage);
         }
+
     }
+
+
 
 
     public void msgToAll(String msg) {
-        for (ClientHandler client : clientList) {
-            client.message(msg);
+        for (Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
+            entry.getValue().message(msg);
         }
 
     }
+
+
 
     private void runServer(int port) throws IOException {
         ServerSocket ss = new ServerSocket(port);
         while (true) {
             Socket client = ss.accept();
-            ClientHandler cl = new ClientHandler();
-            clientList.add(cl);
+            ClientHandler cl = new ClientHandler(this, client);
+
             cl.start();
         }
+
     }
 }
