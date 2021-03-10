@@ -36,25 +36,19 @@ public class ChatServer {
 
 
     public void Online() {
-        String onlineMessage = "";
+        String onlineMessage = "ONLINE#";
         for(Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
-            onlineMessage += entry.getKey();
+            onlineMessage += entry.getKey()+",";
         }
         for(Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
             entry.getValue().message(onlineMessage);
         }
-
     }
 
 
 
 
-    public void msgToAll(String msg) {
-        for (Map.Entry<String, ClientHandler> entry : clientMap.entrySet()){
-            entry.getValue().message(msg);
-        }
 
-    }
 
 
 
