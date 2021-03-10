@@ -19,13 +19,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f7bf0d-004c-4940-8ad1-ab2f6749bfe7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/deploy-to-droplet.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start-server.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ChatServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy-to-droplet.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy-to-droplet.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-server.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ChatServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ClientHandler.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +68,22 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ChatServer" />
+    <configuration name="ChatServer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.ChatServer" />
       <module name="Projekt2Chat" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -95,7 +99,8 @@
       <updated>1615196291773</updated>
       <workItem from="1615196293377" duration="7700000" />
       <workItem from="1615277617978" duration="6814000" />
-      <workItem from="1615365104269" duration="3464000" />
+      <workItem from="1615365104269" duration="5480000" />
+      <workItem from="1615370900440" duration="3967000" />
     </task>
     <servers />
   </component>
@@ -127,22 +132,22 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2609" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615279381381" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615367061834">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1615375050002">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615367061834" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615367061834">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615375050002" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1615375050002">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615367061834" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615367061834">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615375050002" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1615375050002">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615367061834" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615367061834">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615375050002" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1615375050002">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615367061834" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1615375050002" />
     <state x="2430" y="92" key="SettingsEditor" timestamp="1615197181432">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

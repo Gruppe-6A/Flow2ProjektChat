@@ -1,4 +1,4 @@
-import com.sun.xml.internal.fastinfoset.util.StringArray;
+package server;
 
 import java.io.BufferedReader;
 
@@ -42,7 +42,7 @@ public class ClientHandler extends Thread {
 
     public void msgToAll(String msg) {
         for (Map.Entry<String, ClientHandler> entry : server1.clientMap.entrySet()) {
-            entry.getValue().message(msg);
+            entry.getValue().message("MESSAGE#" + this.clientName +"#" + msg);
         }
     }
 
@@ -60,23 +60,29 @@ public class ClientHandler extends Thread {
     private void close0() throws IOException {
         pw.println("CLOSE#0");
         client.close();
+        server1.clientMap.remove(clientName, this);
         server1.Online();
     }
     private void close1() throws IOException {
         pw.println("CLOSE#1");
         client.close();
+        if (server1.clientMap.containsKey(clientName)){
+            server1.clientMap.remove(clientName, this);
+        }
         server1.Online();
     }
     private void close2() throws IOException {
         pw.println("CLOSE#2");
         client.close();
+        if (server1.clientMap.containsKey(clientName)){
+            server1.clientMap.remove(clientName, this);
+        }
         server1.Online();
     }
 
         public void protocol () throws IOException {
             pw.println("YO!");
             String[] input = br.readLine().split("#");
-
             if (input[0].equals("CONNECT")) {
                 clientName = input[1];
                 if (!server1.clientMap.containsKey(input[1])) {
@@ -90,8 +96,14 @@ public class ClientHandler extends Thread {
                 close1();
                 return;
             }
-            while (input[0] != "CLOSE") {
-                input = br.readLine().split("#");
+            while (!input[0].equals("CLOSE")) {
+                try {
+                    input = br.readLine().split("#");
+                } catch (NullPointerException e){
+                    server1.clientMap.remove(clientName, this);
+                    server1.Online();
+                    return;
+                }
                 switch (input[0]) {
 
                     case "SEND":

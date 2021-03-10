@@ -4,7 +4,7 @@
 #NO Spaces allowed on either side of the '='
 
 #SERVER_NAME below MUST mach the DIRECTORY created on your droplet in the /var folder
-SERVER_NAME="chat-server-projekt"
+SERVER_NAME="semester-2-chat-projekt"
 
 DROPLET_URL="167.99.251.230"
 # Change the root below to the non-root user you have setup:

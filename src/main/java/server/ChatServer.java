@@ -1,20 +1,16 @@
-import com.mysql.cj.xdevapi.Client;
+package server;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class ChatServer {
 
     public static final int DEFAULT_PORT = 9001;
-   // ArrayList<ClientHandler> clientList = new ArrayList<>();
+   // ArrayList<server.ClientHandler> clientList = new ArrayList<>();
 
     ConcurrentMap<String, ClientHandler> clientMap = new ConcurrentHashMap<>();
 

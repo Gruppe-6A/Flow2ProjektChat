@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <finalName>my-server</finalName>
+        <finalName>projekt-2-server</finalName>
     </properties>
 
     <dependencies>
@@ -92,7 +92,7 @@
                                 <resource>
                                     <directory>${basedir}/target</directory>
                                     <includes>
-                                        <!--                                        <include>my-server.jar</include>-->
+                                        <!--                                        <include>projekt-2-server.jar</include>-->
                                         <include>${finalName}.jar</include>
                                     </includes>
                                 </resource>
