@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Map;
 
 public class ClientHandler extends Thread {
@@ -30,6 +31,7 @@ public class ClientHandler extends Thread {
     @Override
     public void run(){
         try {
+            this.pw.println();
             protocol();
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,7 +83,6 @@ public class ClientHandler extends Thread {
     }
 
         public void protocol () throws IOException {
-            pw.println("YO!");
             String[] input = br.readLine().split("#");
             if (input[0].equals("CONNECT")) {
                 clientName = input[1];
@@ -100,6 +101,10 @@ public class ClientHandler extends Thread {
                 try {
                     input = br.readLine().split("#");
                 } catch (NullPointerException e){
+                    server1.clientMap.remove(clientName, this);
+                    server1.Online();
+                    return;
+                } catch (SocketException e){
                     server1.clientMap.remove(clientName, this);
                     server1.Online();
                     return;
